@@ -72,9 +72,9 @@ mysql -h mysql.sprojex.in -u root -pExpenseApp@1 -e 'show databases;' &>>$LOG_FI
 
 if [ $? -ne 0 ]
 then
-    echo -e "$B Root password for mysql does not exist $N........ creating" | tee -a $LOG_FILE
+    echo -e "$B mysql root password is not set $N........ setting it now" | tee -a $LOG_FILE
     mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOG_FILE
     VALIDATE $? "Setting root password"
 else
-    echo -e "$Y Root password for mysql is already set $N...... skipping"
+    echo -e "$Y mysql root password is already set $N...... skipping"
 fi
