@@ -68,7 +68,7 @@ systemctl start mysqld &>>$LOG_FILE
 VALIDATE $? "Starting mysqld service"
 
 
-mysql -h mysql.sprojex.in -u root -pExpenseApp@1 -e 'show databases;'
+mysql -h mysql.sprojex.in -u root -pExpenseApp@1 -e 'show databases;' &>>$LOG_FILE
 
 if [ $? -ne 0 ]
 then
