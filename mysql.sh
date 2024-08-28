@@ -68,6 +68,13 @@ systemctl start mysqld &>>$LOG_FILE
 VALIDATE $? "Starting mysqld service"
 
 
-mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOG_FILE
-VALIDATE $? "Setting root password"
+mysql -h mysql.sprojex.in -u root -pExpenseApp@1
 
+if [ $? -ne 0 ]
+then
+    echo -e "$B Root password for mysql does not exist $N........ creating" | tee -a $LOG_FILE
+    mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOG_FILE
+    VALIDATE $? "Setting root password"
+else
+    echo -e "$Y Root password for mysql is already set $N...... skipping"
+fi
