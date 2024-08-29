@@ -72,6 +72,8 @@ VALIDATE $? "extraction of frontend application code"
 
 cp /home/ec2-user/3tier-shell/frontend.conf /etc/nginx/default.d/frontend.conf
 
+cp /home/ec2-user/3tier-shell/frontend-upstream.conf /etc/nginx/conf.d/frontend-upstream.conf
+
 systemctl enable nginx &>>$LOG_FILE
 VALIDATE $? "Enabling nginx"
 
