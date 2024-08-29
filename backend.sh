@@ -103,7 +103,7 @@ dnf install mysql -y &>>$LOG_FILE
 VALIDATE $? "mysql client installation"
 
 mysql -h mysql.sprojex.in -uroot -pExpenseApp@1 < /app/schema/backend.sql
-
+VALIDATE $? "loading schema/database"
 
 systemctl daemon-reload &>>$LOG_FILE
 VALIDATE $? "Daemon reload"
